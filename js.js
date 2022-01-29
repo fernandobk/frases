@@ -7,7 +7,11 @@ async function init(){
 
     let d = await fetch('frases.json');
         d = await d.json();
-        d = d[i];
+    let c = d.length;
+    
+    if(i > c){ i = 0; }
+
+    d = d[i];
     
     frase.innerText = d.frase;
     autor.innerText = d.autor;
