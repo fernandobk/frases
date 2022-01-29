@@ -12,10 +12,10 @@ function mostrar_frase(){
     if( i => window.d.length ){ i = 0; }
     
     // Imprimir frase
-    frase.innerText = d[i].frase;
-    autor.innerText = d[i].autor;
-    libro.innerText = d[i].libro;
-    otrainfo.innerText = d[i].otrainfo;
+    frase.innerText = window.d[i].frase;
+    autor.innerText = window.d[i].autor;
+    libro.innerText = window.d[i].libro;
+    otrainfo.innerText = window.d[i].otrainfo;
 
     localStorage.i = i + 1;
 }
