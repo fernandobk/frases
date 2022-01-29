@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="js.js" defer="defer"></script>
 	</head>
 	<body class="is-preload" onload="init()">
 		<div id="wrapper">
@@ -19,42 +20,25 @@
 			<div id="main">
 
 				<!-- Header -->
-					<header id="header">
-						<h1 id="frase">...</h1>
-						<p id="pie"><i id="autor"></i>&nbsp;&bull;&nbsp;<i id="libro"></i>&nbsp;&bull;&nbsp;<i id="otrainfo"></i></p>
-						<nav>
-							<ul>
-								<li><a href="#" class="icon solid fa-step-backward"><span class="label">Frase anterior</span></a></li>
-								<li><a href="#" class="icon solid fa-random"><span class="label">Frase aleatoria</span></a></li>
-								<li><a href="#" class="icon solid fa-code"><span class="label">Código fuente</span></a></li>
-								<li><a href="#" class="icon solid fa-briefcase"><span class="label">Mi portafolios</span></a></li>
-								<li><a href="#" class="icon solid fa-step-forward"><span class="label">Siguiente frase</span></a></li>
-							</ul>
-						</nav>
-					</header>
+				<header id="header">
+					<h1 id="frase">...</h1>
+					<p id="pie"><i id="autor"></i>&nbsp;&bull;&nbsp;<i id="libro"></i>&nbsp;&bull;&nbsp;<i id="otrainfo"></i></p>
+					<nav>
+						<ul>
+							<li onclick="init()"><a href="#" class="icon solid fa-step-backward"><span class="label">Frase anterior</span></a></li>
+							<li onclick="init()"><a href="#" class="icon solid fa-random"><span class="label">Frase aleatoria</span></a></li>
+							<li><a href="https://github.com/fernandobk/poesia" class="icon solid fa-code" target="_blank"><span class="label">Código fuente</span></a></li>
+							<li><a href="portafolio.fbk.ar" class="icon solid fa-briefcase"><span class="label">Mi portafolios</span></a></li>
+							<li onclick="init()"><a href="#" class="icon solid fa-step-forward"><span class="label">Siguiente frase</span></a></li>
+						</ul>
+					</nav>
+				</header>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; Desarrollo: Fernando Benitez Kleinert. Diseño: <a href="http://html5up.net" target="_blank">HTML5 UP</a>.</span>
-					</footer>
-
+				<footer id="footer">
+					<span class="copyright">&copy; Desarrollo: Fernando Benitez Kleinert. Diseño: <a href="http://html5up.net" target="_blank">HTML5 UP</a>.</span>
+				</footer>
 			</div>
 		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-
-			async function init(){
-				let d = await fetch('frases.json');
-					d = await d.json();
-					d = d[0];
-				
-				frase.innerText = d.frase;
-				autor.innerText = d.autor;
-				libro.innerText = d.libro;
-				otrainfo.innerText = d.otrainfo;
-			}
-		</script>
 	</body>
 </html>
