@@ -9,7 +9,7 @@ async function init(){
         d = await d.json();
     let c = d.length;
     
-    if(i > c){ i = 0; }
+    if(i => c){ i = 0; }
 
     d = d[i];
     
