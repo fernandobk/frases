@@ -3,7 +3,7 @@ window.ontouchmove = function() { return false; }
 window.onorientationchange = function() { document.body.scrollTop = 0; }
 
 async function init(){
-    let i = localStorage.i || 0;
+    let i = parseInt(localStorage.i) || 0;
 
     let d = await fetch('frases.json');
         d = await d.json();
