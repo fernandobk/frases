@@ -1,22 +1,25 @@
-window.onload = function() { document.body.classList.remove('is-preload'); }
-window.ontouchmove = function() { return false; }
-window.onorientationchange = function() { document.body.scrollTop = 0; }
 
 async function init(){
+    // 
+    window.onload = function() { document.body.classList.remove('is-preload'); }
+    window.ontouchmove = function() { return false; }
+    window.onorientationchange = function() { document.body.scrollTop = 0; }
+
+    window.d = await fetch('frases.json');
+    window.d = await d.json();
+    
+    mostrar_frase();
+}
+
+function mostrar_frase(){
     let i = parseInt(localStorage.i) || 0;
-
-    let d = await fetch('frases.json');
-        d = await d.json();
-    let c = d.length;
+    if( i => window.d.length ){ i = 0; }
     
-    if(i => c){ i = 0; }
-
-    d = d[i];
-    
-    frase.innerText = d.frase;
-    autor.innerText = d.autor;
-    libro.innerText = d.libro;
-    otrainfo.innerText = d.otrainfo;
+    // Imprimir frase
+    frase.innerText = d[i].frase;
+    autor.innerText = d[i].autor;
+    libro.innerText = d[i].libro;
+    otrainfo.innerText = d[i].otrainfo;
 
     localStorage.i = i + 1;
 }
