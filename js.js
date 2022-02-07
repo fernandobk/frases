@@ -3,8 +3,7 @@ async function init(){
     // Solicitamos datos al servicio
     let obt = await fetch('https://api.jsonbin.io/b/62009b6b4ce71361b8d1266b');
     if( obt.status === 200 ){
-        obt = await obt.text();
-        localStorage.data = obt.record;
+        localStorage.data = await obt.text();
     }
 
     window.data = JSON.parse(localStorage.data);
