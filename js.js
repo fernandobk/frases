@@ -17,6 +17,7 @@ function mostrar_frase(n){
     }
     if( isFinite(n) ) {
         i = i + n;
+        if( i < 0 ){ i = 0; }
         if( i >= window.data.length ){ i = 0; }
     }
     // Almacenamos nuevo índice
