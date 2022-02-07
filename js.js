@@ -13,10 +13,10 @@ async function init(){
 function mostrar_frase(n){
     let i = parseInt(localStorage.index) || window.data.length - 1;
     
-    if( isFinite(n) && n !== 0 ){
+    if( isFinite(n) ){
         i = i + n;
-        if( i < 0 ){ i = window.data.length - 1; }
-        if( i >= window.data.length ){ i = 0; }
+        if( i === -1 ){ i = window.data.length - 1; }
+        if( i === window.data.length ){ i = 0; }
     }
     if( n === 0 ){
         i = Math.floor(Math.random() * window.data.length );
@@ -51,7 +51,6 @@ async function enviar_frase(){
     );
 
     if( obt.status === 200 ){
-        localStorage.removeItem('data');
         init();
     } else {
         console.error(obt.json());
