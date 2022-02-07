@@ -26,9 +26,7 @@ function mostrar_frase(n){
     
     // Imprimir frase
     frase.innerText = window.data[i].frase;
-    autor.innerText = window.data[i].autor;
-    libro.innerText = window.data[i].libro;
-    otrainfo.innerText = window.data[i].otrainfo;
+    pie.innerText = window.data[i].pie;
 }
 
 function enviar_frase(){
