@@ -1,7 +1,7 @@
 
 async function init(){
     // Solicitamos datos al servicio
-    let obt = await fetch('https://api.jsonbin.io/b/62009b6b4ce71361b8d1266b');
+    let obt = await fetch('https://api.jsonbin.io/b/6200b76cf77b236211eeedde');
     if( obt.status === 200 ){
         localStorage.data = await obt.text();
     }
