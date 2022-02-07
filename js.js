@@ -13,7 +13,7 @@ async function init(){
 function mostrar_frase(n){
     let i = parseInt(localStorage.index) || window.data.length - 1;
     
-    if( isFinite(n) && n !=== 0 ){
+    if( isFinite(n) && n !== 0 ){
         i = i + n;
         if( i < 0 ){ i = window.data.length - 1; }
         if( i >= window.data.length ){ i = 0; }
