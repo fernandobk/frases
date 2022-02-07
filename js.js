@@ -1,7 +1,7 @@
 
 async function init(){
     // Solicitamos datos al servicio
-    let obt = await fetch('https://api.jsonbin.io/b/62008c97f77b236211eeabef');
+    let obt = await fetch('https://api.jsonbin.io/b/62009b6b4ce71361b8d1266b');
     if( obt.status === 200 ){
         obt = await obt.json();
         // Si la fecha de los datos locales es distinta a la obtenida actualizamos los datos locales.
