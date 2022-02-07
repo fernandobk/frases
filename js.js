@@ -29,7 +29,7 @@ function mostrar_frase(n){
     pie.innerText = window.data[i].pie;
 }
 
-function enviar_frase(){
+async function enviar_frase(){
     let p_frase = prompt('Escribir frase');
     let p_pie = prompt('Escribir pie de la frase');
 
