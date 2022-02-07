@@ -11,11 +11,12 @@ async function init(){
 }
 
 function mostrar_frase(n){
+    let i = parseInt(localStorage.index) || 0;
     if( n === 0 ){
-        let i = Math.floor(Math.random() * window.data.length );
-    } else {
-        let i = parseInt(localStorage.index) || 0;
-            i = i + n;
+        i = Math.floor(Math.random() * window.data.length );
+    }
+    if( isFinite(n) ) {
+        i = i + n;
         if( i >= window.data.length ){ i = 0; }
     }
     // Almacenamos nuevo índice
