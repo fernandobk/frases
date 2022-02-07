@@ -27,6 +27,8 @@ function mostrar_frase(n){
     // Imprimir frase
     frase.innerText = window.data[i].frase;
     pie.innerText = window.data[i].pie;
+
+    return i;
 }
 
 async function enviar_frase(){
