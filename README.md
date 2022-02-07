@@ -1,0 +1,1 @@
+Proyecto de ejemplo de uso de api para gestion de datos en formato JSON con servicio externo.
