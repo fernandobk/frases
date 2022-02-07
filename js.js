@@ -13,9 +13,9 @@ async function init(){
 function mostrar_frase(n){
     let i = parseInt(localStorage.index) || window.data.length-1;
     
-    if( isFinite(n) ) {
+    if( isFinite(n) && n !== 0 ){
         i = i + n;
-        if( i < 0 ){ i = 0; }
+        if( i < 0 ){ i = window.data.length - 1; }
         if( i >= window.data.length ){ i = 0; }
     }
     if( n === 0 ){
@@ -43,7 +43,7 @@ async function enviar_frase(){
             headers: {
                 'Content-Type': 'application/json',
                 'X-Bin-Versioning': false,
-                'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi'
+                'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi' // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
             }
         }
     );
