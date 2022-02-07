@@ -3,12 +3,8 @@ async function init(){
     // Solicitamos datos al servicio
     let obt = await fetch('https://api.jsonbin.io/b/62009b6b4ce71361b8d1266b');
     if( obt.status === 200 ){
-        obt = await obt.json();
-        // Si la fecha de los datos locales es distinta a la obtenida actualizamos los datos locales.
-        if( localStorage.data_version !== Date.parse(obt.metadata.createdAt) ){
-            localStorage.data = JSON.stringify(obt.record);
-            localStorage.data_version = Date.parse(obt.metadata.createdAt);
-        }
+        obt = await obt.text();
+        localStorage.data = obt.record;
     }
 
     window.data = JSON.parse(localStorage.data);
