@@ -69,7 +69,7 @@ async function enviar_frase(){
 
 async function eliminar_frase(){
     let i = parseInt(localStorage.index);
-    if( confirm('Se eliminará la frase mostrada actualmente: '+window.data[i]).frase ){
+    if( confirm('Se eliminará la frase mostrada actualmente: '+frase.innerText )){
         localStorage.data = JSON.stringify( JSON.parse(localStorage.data).splice(i,1) );
     }
     await enviar_datos();
