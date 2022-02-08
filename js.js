@@ -63,7 +63,9 @@ async function enviar_frase(){
     let p_pie = prompt('Escribir pie de la frase: (cuidar ortografía)');
     if( !p_pie ){ return; }
     
-    localStorage.data = JSON.stringify( JSON.parse(localStorage.data).push( {frase: p_frase,pie: p_pie} ) );
+    let data = JSON.parse(localStorage.data);
+        data.push( {frase: p_frase.trim(),pie: p_pie.trim()} );
+    localStorage.data = JSON.stringify(data);
     await enviar_datos();
 }
 
