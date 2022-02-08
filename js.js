@@ -1,7 +1,7 @@
 
 async function init(){
     // Solicitamos datos al servicio
-    let obt = await fetch('https://api.jsonbin.io/b/6200bb9bf77b236211eef335');
+    let obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335', {headers: {'X-Bin-Meta':false}});
     if( obt.status === 200 ){
         localStorage.data = await obt.text();
     }
@@ -45,8 +45,8 @@ async function enviar_frase(){
             body: JSON.stringify(window.data),
             headers: {
                 'Content-Type': 'application/json',
-                'X-Bin-Versioning': false,
-                'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi' // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
+                'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi', // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
+                'X-Bin-Versioning': false
             }
         }
     );
