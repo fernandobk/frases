@@ -11,15 +11,16 @@ async function init(){
 }
 
 function mostrar_frase(n){
-    let i = parseInt(localStorage.index) || window.data.length - 1;
-    console.info(i);
+    let i = parseInt(localStorage.index);
+    if( isNaN(i) ){ i = window.data.length - 1; }
+    
     if( isFinite(n) ){
-        i = i + n;console.info(i);
-        if( i === -1 ){ i = window.data.length - 1; }console.info(i);
-        if( i === window.data.length ){ i = 0; }console.info(i);
+        i = i + n;
+        if( i === -1 ){ i = window.data.length - 1; }
+        if( i === window.data.length ){ i = 0; }
     }
     if( n === 0 ){
-        i = Math.floor(Math.random() * window.data.length );console.info(i);
+        i = Math.floor(Math.random() * window.data.length );
     }
     // Almacenamos nuevo índice
     localStorage.index = i;
