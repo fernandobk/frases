@@ -39,7 +39,7 @@ async function enviar_datos(){
 function mostrar_frase(n){
     let data = JSON.parse(localStorage.data);
     let i = parseInt(localStorage.index);
-    if( isNaN(i) ){ i = data.length - 1; }
+    if( isNaN(i) || i>=data.length ){ i = data.length - 1; }
     
     if( isFinite(n) ){
         i = i + n;
@@ -70,7 +70,9 @@ async function enviar_frase(){
 async function eliminar_frase(){
     let i = parseInt(localStorage.index);
     if( confirm('Se eliminará la frase mostrada actualmente: '+frase.innerText )){
-        localStorage.data = JSON.stringify( JSON.parse(localStorage.data).splice(i,1) );
+        let data = JSON.parse(localStorage.data);
+            data.splice(i,1);
+        localStorage.data = JSON.stringify(data);
+        await enviar_datos();
     }
-    await enviar_datos();
 }
