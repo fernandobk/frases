@@ -29,7 +29,8 @@ async function enviar_datos(){
     );
 
     if( obt.status === 200 ){
-        init();
+        obt = await obt.json();
+        localStorage.data = JSON.stringify(obt.record);
     } else {
         console.error(obt.json());
         alert(`Error ${obt.status}: ${obt.statusText} \n Ver consola.`);
@@ -66,7 +67,11 @@ async function enviar_frase(){
     let data = JSON.parse(localStorage.data);
         data.push( {frase: p_frase.trim(),pie: p_pie.trim()} );
     localStorage.data = JSON.stringify(data);
+    frase.innerText = '...';
+    pie.innerText = '...'
     await enviar_datos();
+    localStorage.removeItem('index');
+    mostrar_frase();
 }
 
 async function eliminar_frase(){
@@ -75,6 +80,9 @@ async function eliminar_frase(){
         let data = JSON.parse(localStorage.data);
             data.splice(i,1);
         localStorage.data = JSON.stringify(data);
+        frase.innerText = '...';
+        pie.innerText = '...';
         await enviar_datos();
+        mostrar_frase(-1);
     }
 }
