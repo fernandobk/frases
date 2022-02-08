@@ -83,6 +83,6 @@ async function eliminar_frase(){
         frase.innerText = '...';
         pie.innerText = '...';
         await enviar_datos();
-        mostrar_frase(-1);
+        mostrar_frase();
     }
 }
