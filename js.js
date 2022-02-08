@@ -23,7 +23,7 @@ async function enviar_datos(){
             headers: {
                 'Content-Type': 'application/json',
                 'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi', // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
-                'X-Bin-Versioning': false
+                'X-Bin-Versioning': true
             }
         }
     );
