@@ -1,3 +1,6 @@
+if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register("/js/sw.js");
+}
 
 async function init(){
     await obt_datos();
