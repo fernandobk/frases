@@ -12,7 +12,6 @@ self.addEventListener('install', function (event) {
                 '/index.html',
                 '/manifest.json',
                 '/sw.js',
-                '/index.html',
                 '/css/fontawesome-all.min.css',
                 '/css/main.css',
                 '/css/noscript.css',
