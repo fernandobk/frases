@@ -1,7 +1,7 @@
 async function init(){
-    navigator.serviceWorker.register("sw.js");
+    navigator.serviceWorker.register("/sw.js");
 
-    /*const cache = await caches.open(location.host);
+    const cache = await caches.open(location.host);
     await cache.addAll([
         '/estructura.json',
         '/favicon.png',
@@ -33,7 +33,7 @@ async function init(){
         '/webfonts/fa-regular-400.woff2',
         '/webfonts/fa-solid-900.svg',
         '/webfonts/fa-solid-900.woff'
-    ]);*/
+    ]);
 
     await obt_datos();
     mostrar_frase();
