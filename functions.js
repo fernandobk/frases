@@ -1,40 +1,6 @@
 async function init(){
     navigator.serviceWorker.register("/sw.js");
 
-    const cache = await caches.open(location.host);
-    await cache.addAll([
-        '/estructura.json',
-        '/favicon.png',
-        '/functions.js',
-        '/index.html',
-        '/manifest.json',
-        '/sw.js',
-        '/index.html',
-        '/css/fontawesome-all.min.css',
-        '/css/main.css',
-        '/css/noscript.css',
-        '/css/images/bg.jpg',
-        '/css/images/overlay-pattern.png',
-        '/css/images/overlay.svg',
-        '/css/images/ie/footer.png',
-        '/css/images/ie/footer.svg',
-        '/webfonts/fa-brands-400.eot',
-        '/webfonts/fa-brands-400.ttf',
-        '/webfonts/fa-brands-400.woff2',
-        '/webfonts/fa-regular-400.svg',
-        '/webfonts/fa-regular-400.woff',
-        '/webfonts/fa-solid-900.eot',
-        '/webfonts/fa-solid-900.ttf',
-        '/webfonts/fa-solid-900.woff2',
-        '/webfonts/fa-brands-400.svg',
-        '/webfonts/fa-brands-400.woff',
-        '/webfonts/fa-regular-400.eot',
-        '/webfonts/fa-regular-400.ttf',
-        '/webfonts/fa-regular-400.woff2',
-        '/webfonts/fa-solid-900.svg',
-        '/webfonts/fa-solid-900.woff'
-    ]);
-
     await obt_datos();
     mostrar_frase();
 }
