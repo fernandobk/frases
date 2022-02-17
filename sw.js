@@ -7,7 +7,11 @@ self.addEventListener('install', function (event) {
         .then(function (cache) {
             return cache.addAll([
                 '/estructura.json',
-                '/favicon.png',
+                '/favicon-16x16.png',
+                '/favicon-180x180.png',
+                '/favicon-192x192.png',
+                '/favicon-32x32.png',
+                '/favicon-512x512.png',
                 '/functions.js',
                 '/index.html',
                 '/manifest.json',
