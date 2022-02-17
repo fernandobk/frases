@@ -1,10 +1,10 @@
 {
-    "short_name": "Weather",
-    "name": "Weather: Do I need an umbrella?",
-    "start_url": "/?source=pwa",
-    "background_color": "#3367D6",
+    "short_name": "FBK.ar",
+    "name": "FBK.ar",
+    "start_url": "/",
+    "background_color": "#120b09",
     "display": "standalone",
     "scope": "/",
-    "theme_color": "#3367D6",
-    "description": "Weather forecast information"
+    "theme_color": "#3288ad",
+    "description": "Frases"
   }
