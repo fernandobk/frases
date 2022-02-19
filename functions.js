@@ -93,7 +93,7 @@ async function eliminar_frase(){
     }
 }
 
-await function swOnOff(v){
+async function swOnOff(v){
     await fetch("https://px1.tuyaus.com/homeassistant/skill", {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(
