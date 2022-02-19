@@ -40,7 +40,7 @@ async function enviar_datos(){
     }
 }
 
-function mostrar_frase(n){
+async function mostrar_frase(n){
     let data = JSON.parse(localStorage.data);
     let i = parseInt(localStorage.index);
     if( isNaN(i) || i>=data.length ){ i = data.length - 1; }
