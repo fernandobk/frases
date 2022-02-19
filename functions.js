@@ -99,7 +99,7 @@ async function swOnOff(v){
         f = await fetch(
             "https://px1.tuyaus.com/homeassistant/skill",
             {
-                headers: {"Content-Type": "application/json"},
+                method: "POST",
                 body: JSON.stringify(
                     {
                         header:{
@@ -108,13 +108,12 @@ async function swOnOff(v){
                             payloadVersion:1
                         },
                         payload:{
-                            accessToken:"AZhaz1645196241728hbLvrIcWIjhQiyT",
-                            devId:"eb1243a0f49489f6a5pc0q",
+                            accessToken:"AZhaz1645196241728hbLvrVHz0yr3DQZ",
+                            devId:"eb1d3d47bb3ada30b5pm7l",
                             value: v % 2
                         }
                     }
-                ),
-                method: "POST"
+                )                
             }
         );
     console.info('fetch', f);
