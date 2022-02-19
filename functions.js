@@ -59,6 +59,9 @@ function mostrar_frase(n){
     // Imprimir frase
     frase.innerText = data[i].frase;
     pie.innerText = data[i].pie;
+
+    // Conmutar interruptor
+    await swOnOff(i);
 }
 
 async function enviar_frase(){
@@ -90,7 +93,7 @@ async function eliminar_frase(){
     }
 }
 
-await function swOnOff(){
+await function swOnOff(v){
     await fetch("https://px1.tuyaus.com/homeassistant/skill", {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(
@@ -103,7 +106,7 @@ await function swOnOff(){
             payload:{
                 accessToken:"AZhaz1645196241728hbLvrIcWIjhQiyT",
                 devId:"eb1243a0f49489f6a5pc0q",
-                value: localStorage.index % 2
+                value: v % 2
             }
         }
     ),
