@@ -94,22 +94,31 @@ async function eliminar_frase(){
 }
 
 async function swOnOff(v){
-    await fetch("https://px1.tuyaus.com/homeassistant/skill", {
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(
-        {
-            header:{
-                name:"turnOnOff",
-                namespace:"control",
-                payloadVersion:1
-            },
-            payload:{
-                accessToken:"AZhaz1645196241728hbLvrIcWIjhQiyT",
-                devId:"eb1243a0f49489f6a5pc0q",
-                value: v % 2
+    console.group('tuyaSmart')
+    let f;
+        f = await fetch(
+            "https://px1.tuyaus.com/homeassistant/skill",
+            {
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(
+                    {
+                        header:{
+                            name:"turnOnOff",
+                            namespace:"control",
+                            payloadVersion:1
+                        },
+                        payload:{
+                            accessToken:"AZhaz1645196241728hbLvrIcWIjhQiyT",
+                            devId:"eb1243a0f49489f6a5pc0q",
+                            value: v % 2
+                        }
+                    }
+                ),
+                method: "POST"
             }
-        }
-    ),
-    method: "POST"
-   });
+        );
+    console.info('fetch', f);
+    f = await f.json();
+    console.info('respuesta', f);
+    console.groupEnd();
 }
