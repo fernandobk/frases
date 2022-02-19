@@ -3,7 +3,7 @@ console.info('Hola. Esto es el Service Worker');
 self.addEventListener('install', function (event) {
     // Perform install steps
     event.waitUntil(
-        caches.open(location.host)
+        caches.open('fbkar')
         .then(function (cache) {
             return cache.addAll([
                 '/estructura.json',
@@ -49,6 +49,7 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request)
         .then(function(response) {
             // Cache hit - return response
+            console.info(event.request);
             if (response) {
                 return response;
             }
