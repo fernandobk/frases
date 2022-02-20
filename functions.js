@@ -93,6 +93,25 @@ async function eliminar_frase(){
     }
 }
 
+async function editar_frase(){
+    let i, data;
+    i = parseInt(localStorage.index);
+    data = JSON.parse(localStorage.data);
+    
+    let p_frase = prompt('Escribir frase: (cuidar ortografía)', data[i].frase);
+    if( !p_frase ){ return; }
+    let p_pie = prompt('Escribir pie de la frase: (cuidar ortografía)', data[i].pie);
+    if( !p_pie ){ return; }
+
+    data[i].frase = p_frase;
+    data[i].pie = p_pie;
+    localStorage.data = JSON.stringify(data);
+    frase.innerText = '...';
+    pie.innerText = '...';
+    await enviar_datos();
+    mostrar_frase();
+}
+
 async function swOnOff(v){
     console.group('tuyaSmart')
     let f;
