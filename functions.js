@@ -61,7 +61,7 @@ async function mostrar_frase(n){
     pie.innerText = data[i].pie;
 
     // Conmutar interruptor
-    await swOnOff(i);
+    //await swOnOff(i);
 }
 
 async function enviar_frase(){
@@ -135,8 +135,33 @@ async function swOnOff(v){
                 )                
             }
         );
-    console.info('fetch', f);
+    console.info('fetch: swOnOff()', f);
     f = await f.json();
     console.info('respuesta', f);
     console.groupEnd();
+}
+
+async function swVer(){
+    let f;
+    f = await fetch(
+        "https://px1.tuyaus.com/homeassistant/skill",
+        {
+            method: "POST",
+            body: {
+                header:{
+                    name:"Discovery",
+                    namespace:"discovery",
+                    payloadVersion:1
+                },
+                payload:{
+                    accessToken:"AZhaz1645196241728hbLvrtef0K9hlKE"
+                }
+            }
+        }
+    );
+    
+    console.info('fetch: swVer()', f)
+    f = await f.json();
+    console.info('Estado de accessToken', await f);
+    console.info('Estado del dispositivo: ', f.payload.devces[0].data.state);
 }
