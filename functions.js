@@ -3,8 +3,6 @@ async function init(){
 
     await obt_datos();
     mostrar_frase();
-
-    window.v_sw = 0;
 }
 
 async function obt_datos(){
