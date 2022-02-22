@@ -7,7 +7,9 @@ async function init(){
 
 async function obt_datos(){
     // Solicitamos datos al servicio
-    let obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest');
+    let obt;
+    try{ obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest'); }
+    catch(err){ console.warn('error en fetch:', err); return; }
     if( obt.status === 200 ){
         obt = await obt.json();
         localStorage.data = JSON.stringify(obt.record);
