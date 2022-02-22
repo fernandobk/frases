@@ -3,17 +3,11 @@ console.info('Hola. Esto es el Service Worker');
 self.addEventListener('install', function (event) {
     // Perform install steps
     event.waitUntil(
-        caches.open('fbkar')
+        caches.open('fbkar-v1')
         .then(function (cache) {
             return cache.addAll([
-                '/estructura.json',
-                '/favicon-16x16.png',
-                '/favicon-180x180.png',
-                '/favicon-192x192.png',
-                '/favicon-32x32.png',
-                '/favicon-512x512.png',
+                '/',
                 '/functions.js',
-                '/index.html',
                 '/manifest.json',
                 '/sw.js',
                 '/css/fontawesome-all.min.css',
@@ -44,9 +38,13 @@ self.addEventListener('install', function (event) {
     );
 });
 
+self.addEventListener('activate', event => {
+    console.log('V1 now ready to handle fetches!');
+});
+
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
+        caches.match(new URL(event.request.url))
         .then(function(response) {
             // Cache hit - return response
             console.info('event.request: ',event.request);
