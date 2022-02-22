@@ -7,9 +7,10 @@ async function init(){
 
 async function obt_datos(){
     // Solicitamos datos al servicio
-    let obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest', {headers: {'X-Bin-Meta':false}});
+    let obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest');
     if( obt.status === 200 ){
-        localStorage.data = await obt.text();
+        obt = await obt.json();
+        localStorage.data = JSON.stringify(obt.record);
     } else {
         alert('No se pudo obtener información de internet correctamente. Error '+obt.status+': '+obt.statusText);
     }
