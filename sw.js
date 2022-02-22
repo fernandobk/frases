@@ -7,6 +7,11 @@ self.addEventListener('install', function (event) {
         .then(function (cache) {
             return cache.addAll([
                 '/',
+                '/favicon16.png',
+                '/favicon32.png',
+                '/favicon180.png',
+                '/favicon192.png',
+                '/favicon512.png',                
                 '/functions.js',
                 '/manifest.json',
                 '/sw.js',
@@ -39,20 +44,18 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('activate', event => {
-    console.log('V1 now ready to handle fetches!');
+    console.log('Evento "activate"');
 });
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(new URL(event.request.url))
+        caches.match(new URL(event.request.url).pathname)
         .then(function(response) {
             // Cache hit - return response
             console.info('event.request: ',event.request);
             console.info('response: ',response);
-            if (response) {
-                return response;
-            }
-            return fetch(event.request);
+            if (response) { return response; }
+            return fetch(event.request.url);
         })
     );
 });
