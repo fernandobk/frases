@@ -8,11 +8,13 @@ async function init(){
 async function obt_datos(){
     // Solicitamos datos al servicio
     let obt;
-    try{ obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest'); }
+    //try{ obt = await fetch('https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335/latest'); }
+    try{ obt = await fetch('https://fbkar.000webhostapp.com/almacenjson/frases'); }
     catch(err){ console.warn('error en fetch:', err); return; }
     if( obt.status === 200 ){
-        obt = await obt.json();
-        localStorage.data = JSON.stringify(obt.record);
+        /*obt = await obt.json();
+        localStorage.data = JSON.stringify(obt.record);*/
+        localStorage.data = await obt.text();
     } else {
         alert('No se pudo obtener información de internet correctamente. Error '+obt.status+': '+obt.statusText);
     }
@@ -20,21 +22,23 @@ async function obt_datos(){
 
 async function enviar_datos(){
     let obt = await fetch(
-        'https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335',
+        //'https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335',
+        'https://fbkar.000webhostapp.com/almacenjson/frases',
         {
             method: 'PUT',
             body: localStorage.data,
-            headers: {
+            /*headers: {
                 'Content-Type': 'application/json',
                 'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi', // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
-                'X-Bin-Versioning': true
-            }
+                'X-Bin-Versioning': false
+            }*/
         }
     );
 
     if( obt.status === 200 ){
-        obt = await obt.json();
-        localStorage.data = JSON.stringify(obt.record);
+        /*obt = await obt.json();
+        localStorage.data = JSON.stringify(obt.record);*/
+        mostrar_frase();
     } else {
         console.error(obt.json());
         alert(`Error ${obt.status}: ${obt.statusText} \n Ver consola.`);
