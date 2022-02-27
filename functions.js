@@ -25,19 +25,16 @@ async function enviar_datos(){
         //'https://api.jsonbin.io/v3/b/6200bb9bf77b236211eef335',
         'https://fbkar.000webhostapp.com/almacenjson/frases',
         {
-            method: 'PUT',
+            method: 'POST',
             body: localStorage.data,
-            /*headers: {
+            headers: {
                 'Content-Type': 'application/json',
-                'X-Master-Key': '$2b$10$e9hka2uXqiI51ffQjR2zj.x.RW11VhFa7yJ5Ydu4x0z58ap1MKsLi', // Aclaración: Esta clave debería estar oculta o en el backend en un proyecto serio.
-                'X-Bin-Versioning': false
-            }*/
+                'Authorization': 'Bearer 5a9f56a8fb0d0f8b5f5f5e87ab6cf2c3'
+            }
         }
     );
 
-    if( obt.status === 200 ){
-        /*obt = await obt.json();
-        localStorage.data = JSON.stringify(obt.record);*/
+    if( obt.status === 202 ){
         mostrar_frase();
     } else {
         console.error(obt.json());
@@ -115,58 +112,4 @@ async function editar_frase(){
     pie.innerText = '...';
     await enviar_datos();
     mostrar_frase();
-}
-
-async function swOnOff(v){
-    console.group('tuyaSmart')
-    let f;
-        f = await fetch(
-            "https://px1.tuyaus.com/homeassistant/skill",
-            {
-                method: "POST",
-                body: JSON.stringify(
-                    {
-                        header:{
-                            name:"turnOnOff",
-                            namespace:"control",
-                            payloadVersion:1
-                        },
-                        payload:{
-                            accessToken:"AZhaz1645196241728hbLvrVHz0yr3DQZ",
-                            devId:"eb1d3d47bb3ada30b5pm7l",
-                            value: v % 2
-                        }
-                    }
-                )                
-            }
-        );
-    console.info('fetch: swOnOff()', f);
-    f = await f.json();
-    console.info('respuesta', f);
-    console.groupEnd();
-}
-
-async function swVer(){
-    let f;
-    f = await fetch(
-        "https://px1.tuyaus.com/homeassistant/skill",
-        {
-            method: "POST",
-            body: {
-                header:{
-                    name:"Discovery",
-                    namespace:"discovery",
-                    payloadVersion:1
-                },
-                payload:{
-                    accessToken:"AZhaz1645196241728hbLvrtef0K9hlKE"
-                }
-            }
-        }
-    );
-    
-    console.info('fetch: swVer()', f)
-    f = await f.json();
-    console.info('Estado de accessToken', await f);
-    console.info('Estado del dispositivo: ', f.payload.devces[0].data.state);
 }
